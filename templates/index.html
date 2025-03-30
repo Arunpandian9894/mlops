@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container Box */
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        /* Title */
+        h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin: 10px 0 5px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            background: #fff;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #ff4b5c;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1e3c;
+        }
+
+        /* Prediction Message Styling */
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .fraud {
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+        }
+
+        .legit {
+            background-color: rgba(0, 200, 0, 0.8);
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔍 Fraud Detection Form</h2> 
+        <form method="POST">
+            <label>Distance from Home:</label>
+            <input type="text" name="distance_from_home" required>
+
+            <label>Distance from Last Transaction:</label>
+            <input type="text" name="distance_from_last_transaction" required>
+
+            <label>Ratio to Median Purchase Price:</label>
+            <input type="text" name="ratio_to_median_purchase_price" required>
+
+            <label>Repeat Retailer:</label>
+            <select name="repeat_retailer">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label>Used Chip:</label>
+            <select name="used_chip">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label>Used PIN Number:</label>
+            <select name="used_pin_number">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label>Online Order:</label>
+            <select name="online_order">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <button type="submit">🚀 Predict</button>
+        </form>
+
+        <!-- Display Prediction Message from Flask -->
+ 
+            <div>
+                {{ prediction_message }}
+            </div>
+      
+    </div>
+</body>
+</html>
